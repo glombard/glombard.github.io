@@ -1,0 +1,19 @@
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title: Lombard's Blog
+tagline: Come See His Disorganized Thoughts (ramblings on software development and random stuff)
+url: http://codeblast.net
+paginate:         1
+baseurl:          /
+author:
+  name:           Gert Lombard
+  url:            https://twitter.com/codeblast
+  email:          gert.lombard@gmail.com
+
+# Custom vars
+version:          1.0.0
+github:
+  repo:           https://github.com/glombard/glombard.github.io
