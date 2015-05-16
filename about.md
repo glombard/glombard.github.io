@@ -1,3 +1,8 @@
+---
+layout: page
+title: About
+---
+
 ![Gert](https://d3mod6n032mdiz.cloudfront.net/thumb2/l/o/m/lombard/lombard-300x200.jpg)
 
 Hi there! I'm Gert Lombard. I'm a Software Engineer at Twitter.
