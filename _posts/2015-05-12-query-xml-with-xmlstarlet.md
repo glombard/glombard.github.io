@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Using XMLStarlet to query XML docs on the command-line
+tags: scripting
 ---
 
 If you're a developer or DevOps-type guy, then I bet you like doing things on the command-line and/or in batch files / shell scripts.

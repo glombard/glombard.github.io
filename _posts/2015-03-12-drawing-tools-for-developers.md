@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Drawing tools for developers
+tags: tools
 ---
 
 If you're like me, then you hate doing documentation. I'd much rather draw a block diagram on a whiteboard and a photo of it. But sometimes you need to create a more official looking diagram, and then you probably want a tool that helps you get the job done as quickly as possible, without having to learn how to use Visio or some complex graphics / drawing application.
