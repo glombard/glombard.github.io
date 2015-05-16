@@ -6,7 +6,7 @@ baseurl: http://codeblast.com
 github:
   repo: https://github.com/glombard/glombard.github.io
 highlighter: pygments
-pages:
+links:
   About: /about
   Archive: /archive
   Feed: /atom.xml
