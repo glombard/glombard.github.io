@@ -2,7 +2,7 @@ author:
   email: gert.lombard@gmail.com
   name: Gert Lombard
   url: https://twitter.com/codeblast
-baseurl: http://codeblast.com
+baseurl: ''
 github:
   repo: https://github.com/glombard/glombard.github.io
 highlighter: pygments
@@ -19,4 +19,4 @@ sass:
 tagline: Android testing and random thoughts on software development.
 title: Gert Lombard's Blog
 url: http://codeblast.com
-version: 1.0.1
+version: 1.0.2

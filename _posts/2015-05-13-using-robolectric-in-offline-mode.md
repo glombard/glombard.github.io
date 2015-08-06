@@ -4,6 +4,12 @@ title: Using Robolectric in offline mode
 tags: android, testing
 ---
 
+## The scenario
+
+- Your CI server doesn't have direct internet access; or
+- it requires a proxy for internet access
+- and your Robolectric test builds are failing as result...
+
 ## The problem
 
 The Robolectric test runner downloads some dependency jars that it needs to run at *runtime* (not compile-time). Normally you don't even notice this when running your unit tests locally, but this could be a problem on Jenkins/CI if your company doesn't allow internet access from the CI boxes (as it should be). What happens is, when the Robolectric tests try to run on your CI box, it will fail with a MultipleArtifactsNotFoundException error like the following:
@@ -136,3 +142,26 @@ Instead of Step 2 above, of course you could just install the necessary files in
       -Dfile=/tmp/robolectric-files/shadows-core-3.0-rc2-21.jar
 
 But in my solution above I opted for overriding the location of the files using the `robolectric.offline` and `robolectric.dependency.dir` system settings, because that way I have more clear control and visibility over which files I'm responsible for maintaining manually.
+
+**Update** 17 July 2015:
+
+My python script above worked for robolectric-3.0-rc2 but not the final 3.0 version `pom.xml`... See [@benoberkfel's comment](https://gist.github.com/glombard/2fdb883de1d50fb51d1a#comment-1464721).
+
+**Another solution** suggested by [@nenick](https://github.com/robolectric/robolectric/issues/571#issuecomment-93361462):
+
+Create a file called ~/.m2/settings.xml and specify a mirror URL for your local Artifactory/Nexus repository. That way Robolectric will automatically download the required runtime files from your local mirror and no other hacks are required. This seems like a nicer solution depending on your needs. Something like this:
+
+    <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+        <mirrors>
+            <mirror>
+                <id>nexus</id>
+                <name>mirror of remote repositories</name>
+                <mirrorOf>*</mirrorOf>
+                <url>https://<your address>/nexus/content/groups/public</url>
+            </mirror>
+        </mirrors>
+    </settings>
+
+Also see this related issue on GitHub: [Dependency resolution behind proxy #571](https://github.com/robolectric/robolectric/issues/571)
