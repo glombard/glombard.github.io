@@ -115,8 +115,9 @@ the "Login" and "List tasks" functionality at all. If I'm a developer tasked to 
 to build a mental model of the `login` or `list` code in order to understand and work on the `edit` code.
 
 In John Papa’s Angular Style Guide, he describes the
-[LIFT](https://github.com/johnpapa/angular-styleguide#application-structure-lift-principle)
-and [Folders-by-Feature Structure] guidelines for naming the directories in a project:
+[LIFT](https://github.com/johnpapa/angular-styleguide#application-structure-lift-principle) and
+[Folders-by-Feature Structure](https://github.com/johnpapa/angular-styleguide#style-y152)
+guidelines for naming the directories in a project:
 
 - *"Create folders named for the feature they represent... Do not structure your app using
   folders-by-type. This requires moving to multiple folders when working on a feature and
