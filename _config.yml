@@ -7,7 +7,7 @@ gems:
 - jekyll-paginate
 github:
   repo: https://github.com/glombard/glombard.github.io
-highlighter: pygments
+highlighter: rouge
 links:
   About: /about
   Archive: /archive
@@ -21,4 +21,4 @@ sass:
 tagline: My passion is code quality, automated testing, software craftsmanship.
 title: Gert Lombard's Blog
 url: http://codeblast.com
-version: 1.0.3
+version: 1.0.4

@@ -24,7 +24,7 @@ And we also need [caskroom][cask] to install apps with binary installers:
 
 **2. install zsh**
 
-	$ brew cask install zsh
+	$ brew install zsh
 
 **3. install iTerm2**
 
@@ -50,7 +50,7 @@ Re-open iterm2 and check the shell version again to confirm zsh is running:
 	% echo $ZSH_VERSION
 	5.0.5
 
-Specify custom location for my dot-files so I can save them in git:
+Specify custom location for my dot-files so I can save them in a git repository at [BitBucket](http://bitbucket.org):
 
 	% mkdir ~/dotfiles
 	% cat <<EOT > ~/dotfiles/.zshenv
@@ -58,7 +58,7 @@ Specify custom location for my dot-files so I can save them in git:
 	export ZDOTDIR=~/dotfiles
 	source "\${ZDOTDIR}/.zprofile"
 	EOT
-	% touch $ZDOTDIR/.zshrc # will put my fav aliases and functions here
+	% touch ~/dotfiles/.zshrc # will put my fav aliases and functions here
 	% ln -s ~/dotfiles/.zshenv ~/.zshenv
 
 Quick example of some [handy aliases][profile] etc in `.zshrc`:
@@ -88,14 +88,18 @@ Re-open the iterm2 window to see if all the dotfiles are set up correctly (i.e. 
 
 Set the theme (I use `steeef` built-in theme), modules (like git) etc in `.zpreztorc`:
 
-	% subl $ZDOTDIR/.zpreztorc 
+	% vi $ZDOTDIR/.zpreztorc
 
-After setting up vi key bindings, `^R` for history substring search stopped working. View key bindings - this confirms `^R` is now bound to "redisplay":
+For example, to change the theme in `.zpreztorc` from the default, look for the following line and change `sorin` to `steeef`:
 
-	% bindkey -L | ag '\^R'
+	zstyle ':prezto:module:prompt' theme 'sorin' # <-- change 'sorin' to 'steeef'...
+
+After setting up vi key bindings, `^R` for history substring search stopped working. View the current key bindings - this confirms `^R` is currently bound to `redisplay` instead of `history-incremental-search-backward`:
+
+	% bindkey -L | grep '\^R'
 	bindkey "^R" redisplay
 
-I added this line to my `.zshrc` file to enable `^R` history search again:
+I added this line to my `~/dotfiles/.zshrc` file to enable `^R` history search again:
 
 	bindkey "^R" history-incremental-search-backward
 
