@@ -2,6 +2,7 @@
 layout: post
 title: Installing Android Studio on Ubuntu 64 bit
 tags: ubuntu, android studio
+comments: true
 ---
 
 Note to self: how to install Oracle JDK 8 and Android Studio on Ubuntu 14.04 64 bit:

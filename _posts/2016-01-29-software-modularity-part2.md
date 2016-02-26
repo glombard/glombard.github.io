@@ -2,6 +2,7 @@
 layout: post
 title: Software Modularity Part 2
 tags: modularity, architecture
+comments: true
 ---
 
 In the [previous post]({% post_url 2016-01-21-software-modularity-part1 %}), I described one aspect of modularity: how should you split your app into multiple packages/directories? In this post, I'm continuing on the topic of software modularity...

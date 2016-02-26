@@ -2,6 +2,7 @@
 layout: post
 title: Android Dagger 2 Generated annotation JSR250
 tags: android, dagger-2
+comments: true
 ---
 
 When you're using Dagger 2.0 in your Android projects, you'll quickly realize you need to include

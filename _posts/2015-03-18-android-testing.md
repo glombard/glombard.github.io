@@ -2,6 +2,7 @@
 layout: post
 title: Android Testing
 tags: android, testing
+comments: true
 ---
 
 Try this: go to GitHub. Search for any open-source Android app you can think of. OK, now take a look at the app's unit tests. Yes, the unit tests.

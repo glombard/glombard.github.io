@@ -2,6 +2,7 @@
 layout: post
 title: What's the context of this Context?
 tags: android
+comments: true
 ---
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/rallat">@rallat</a> Context!</p>&mdash; Gert Lombard (@codeblast) <a href="https://twitter.com/codeblast/status/636679726757613568">August 26, 2015</a></blockquote>

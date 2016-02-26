@@ -2,6 +2,7 @@
 layout: post
 title: How to structure app packages - Modularity Part 1
 tags: modularity, architecture, android
+comments: true
 ---
 
 How should you structure your code into separate directories/packages/namespaces?

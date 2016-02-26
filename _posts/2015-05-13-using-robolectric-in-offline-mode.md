@@ -2,6 +2,7 @@
 layout: post
 title: Using Robolectric in offline mode
 tags: android, testing
+comments: true
 ---
 
 ## The scenario

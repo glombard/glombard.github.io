@@ -2,6 +2,7 @@
 layout: post
 title: Prettier OSX terminal with iTerm2 and Prezto
 tags: tools, osx
+comments: true
 ---
 
 I wanted to describe my current Mac OS X shell setup. I've switched from the default Terminal.app to [iTerm2][iterm]. This includes the following:

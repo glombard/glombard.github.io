@@ -2,6 +2,7 @@
 layout: post
 title: Markdown blogging on an iPad
 tags: blogging
+comments: true
 ---
 
 I just installed the [Editorial][1] app on my new iPad and using a bluetooth keyboard for typing. Yay! Blogging is possible on an iPad!
