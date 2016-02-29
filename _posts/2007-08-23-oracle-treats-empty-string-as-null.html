@@ -1,0 +1,14 @@
+---
+layout: post
+title: Oracle treats an empty string as NULL
+date: '2007-08-23T01:08:00.000-07:00'
+author: Gert Lombard
+tags:
+- programming
+- oracle
+modified_time: '2007-08-24T01:11:47.183-07:00'
+blogger_id: tag:blogger.com,1999:blog-1583243090910089198.post-592010744816841025
+blogger_orig_url: http://www.lombard.me/2007/08/oracle-treats-empty-string-as-null.html
+---
+
+As a Microsoft SQL / MySQL developer I was surprised to find out today that Oracle doesn't support empty strings in "NOT NULL" fields!  This is because Oracle treats an empty string, i.e. '', the same as NULL.<br /><br />Of course this is old news to Oracle users, but even some of my colleagues who'd been using Oracle longer than me were unaware of this.<br /><br />I realized this after trying to figure out why an INSERT statement like the following kept complaining that column B cannot be NULL:<br /><br /><span style="font-family: courier new;">insert into MYTABLE ( A, B ) values ( 'hello', '' )</span><br /><br />I think that's not very clever at all.<br /><br />That means, for example, if your code performs a search on a field, the following can never work:<br /><br />select * from MYTABLE where B = :value<br /><br />if the :value parameter is an empty string, since you'd have to say "where B is null" instead.<br /><br />Google "oracle empty string null" for more descriptions.

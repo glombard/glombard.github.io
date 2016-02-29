@@ -1,0 +1,13 @@
+---
+layout: post
+title: Summary of X.509 certificate file types
+date: '2008-03-03T05:42:00.000-08:00'
+author: Gert Lombard
+tags:
+- x509
+modified_time: '2008-03-03T05:45:25.758-08:00'
+blogger_id: tag:blogger.com,1999:blog-1583243090910089198.post-9073686086534585563
+blogger_orig_url: http://www.lombard.me/2008/03/summary-of-x509-certificate-file-types.html
+---
+
+What is the difference between .spc and .cer?  .pvk and .pfx?<br /><br />As part of my ongoing mission to try to understand X509 certificates I wanted to figure out how to copy a test SSL certificate from one PC to another. The problem is <code>makecert.exe</code> generated a .cer file and I needed a .pfx file to import the certificate on the other server.<br /><br />Use the <code>-pe</code> option with <code>makecert.exe</code> to create and install a certificate with an exportable private key. This should allow you to export the .pfx file from Certificates console.<br /><br />Otherwise, use <code>cert2spc.exe</code> and <code>pvkimprt.exe</code> to convert the .cer and .pvk created by <code>makecert.exe</code> to a .pfx file:<br /><pre><code>makecert -pe -n "CN=My Root CA, O=Test, OU=For Testing Only!" -ss my -sr LocalMachine -a sha1 -sky signature -r -sv test.pvk test.cer<br />cert2spc test.cer test.spc<br />pvkimprt -pfx test.spc test.pvk</code></pre>Or use <code>pvk2pfx</code> instead of the above:<br /><pre><code>pvk2pfx -pvk test.pvk -spc test.cer -pfx test.pfx -po pfx_password_here -f</code></pre><b>X.509 File Types:</b><br /><ul><li>.CER = "DER" encoded binary X.509 Certificate file, e.g. as created by makecert. Contains only the public key.</li><li>.CRT = base-64 encoded X.509 certificate. (Not the same as a Microsoft standard base-64 .cer file...?)</li><li>.SPC = Software Publisher's Certificate. PKCS #7 standard that contains X.509 certificates. The cert2spc.exe utility converts a .cer file to .spc.  .spc files are used as input to signcode.exe.</li><li>.PVK = private key file, e.g. as created by makecert.</li><li>.PFX = Personal Exchange file, contains certs with both the public and private key. PKCS#12 standard, binary DER encoded.</li></ul><b>Some Windows certificate tools:</b><br /><ul><li>makecert.exe</li><li>pvkimprt.exe</li><li>cert2spc.exe</li><li>selfssl.exe</li><li>pvk2pfx.exe</li><li>certmgr.exe</li></ul><b>See also:</b><br /><ul><li><a href="http://msdn2.microsoft.com/en-us/library/aa906332.aspx">pvk2pfx Tool</a></li><li><a href="http://msdn2.microsoft.com/en-us/library/bfsktky3%28VS.80%29.aspx">Makecert Tool</a></li></ul>

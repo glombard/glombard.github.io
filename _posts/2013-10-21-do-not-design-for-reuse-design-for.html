@@ -1,0 +1,15 @@
+---
+layout: post
+title: Do not design for reuse - design for loose coupling
+date: '2013-10-21T08:48:00.001-07:00'
+author: Gert Lombard
+tags:
+- dependencies
+- ooad
+- reuse
+modified_time: '2013-10-21T08:48:48.047-07:00'
+blogger_id: tag:blogger.com,1999:blog-1583243090910089198.post-8985258147668851567
+blogger_orig_url: http://www.lombard.me/2013/10/do-not-design-for-reuse-design-for.html
+---
+
+I came across this cool line&nbsp;today:<br /><blockquote><span style="-webkit-text-stroke-width: 0px; background-color: white; color: black; display: inline !important; float: none; font-size-adjust: none; font-stretch: normal; font: 26px/36px &quot;Open Sans&quot;, Arial, sans-serif; letter-spacing: -1px; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px;">"It can be better to copy a little code than to pull in a big library for one function."</span>-- <a href="http://talks.golang.org/2012/splash.slide#1">Go at Google</a> by Rob Pike</blockquote>Nowadays we keep hearing about all the virtues of code reuse, so much that it's almost becoming unheard of to question it. People may look at you funny when you suggest that some DTO class should be a separate class even though it happens to contain all the same properties as an existing model class.<br /><br />It can be difficult to determine where to draw the line, but remember: just because&nbsp;two classes&nbsp;happen to look the same doesn't mean that it is necessarily the same thing. Sometimes copying &amp; pasting is better than reuse e.g. using inheritance.<br /><br />Reuse means coupling (or a dependency) when there is no need for that dependency.<br /><br />I've always like this <a href="http://sonjayatandon.com/04-2006/ooad-101-lesson-2-coupling-and-cohesion-trump-reuse-and-inheritance/">OOAD 101&nbsp;blog post</a> about coupling and cohesion:<br /><blockquote>"DO NOT design for reuse. Design for loose coupling, high cohesion. Do that and reuse will happen on its own."</blockquote> Also see: <a href="https://bbs.archlinux.org/viewtopic.php?id=75960">Is code reuse a lie?</a>

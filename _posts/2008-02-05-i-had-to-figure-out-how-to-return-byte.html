@@ -1,0 +1,12 @@
+---
+layout: post
+title: Returning a byte array from C++ to Visual Basic 6
+date: '2008-02-05T22:17:00.000-08:00'
+author: Gert Lombard
+tags: 
+modified_time: '2013-02-09T03:10:15.569-08:00'
+blogger_id: tag:blogger.com,1999:blog-1583243090910089198.post-6609385342119384549
+blogger_orig_url: http://www.lombard.me/2008/02/i-had-to-figure-out-how-to-return-byte.html
+---
+
+I had to figure out how to return a byte array from a C++ DLL to VB6 (using unmanaged C++ in Visual Studio 2005).<br /><br />This is the general idea:<br /><br /><pre>__declspec(dllexport) int __stdcall modifyArrayTest(SAFEARRAY** fileData)<br />{<br /> HRESULT hr;<br /> SAFEARRAYBOUND bound[1];<br /> if (*fileData != NULL)<br /> {<br />  TCHAR msg[128];<br />  _stprintf(msg, "Received %lu byte array, destroying it and reallocating", (*fileData)-&gt;rgsabound[0].cElements);<br />  OutputDebugString(msg);<br />  SafeArrayDestroy(*fileData);<br /> }<br /> else<br /> {<br />  OutputDebugString("Received null array, reallocating");<br /> }<br /> bound[0].cElements = 10; // 10 byte array<br /> bound[0].lLbound = 0;<br /> *fileData = SafeArrayCreate(VT_UI1, 1, bound);<br /> hr = SafeArrayLock(*fileData);<br /> if (hr)<br /> {<br />  OutputDebugString("SafeArrayLock failed");<br />  return -1;<br /> }<br /> unsigned char *data = (unsigned char*)(*fileData)-&gt;pvData;<br /> for (int n = 0; n &lt; 10; n++)<br /> {<br />  data[n] = n;<br /> }<br /> SafeArrayUnlock(*fileData);<br /> return 0;<br />}</pre><br /><br />Now the function is imported as follows in VB6:<br /><br /><code>Private Declare Function modifyArrayTest _<br />Lib "ArrayTest.dll" (ByRef a() As Byte) As Long</code><br /><br />And used like this:<br /><br /><code>Dim data() as Byte<br />Dim returnedBytes as Long<br />Call modifyArrayTest(data)<br />returnedBytes = UBound(data) + 1</code><br /><br />Notes:<br /><ul><li>I found it useful to use OutputDebugString to log debug messages in my DLL code and then using <a href="http://technet.microsoft.com/en-us/sysinternals/bb896647.aspx">DebugView</a> from SysInternals to view the messages.</li><li>I noticed the DLL has to be compiled using ANSI (i.e. Character Set = Not Set) instead of Unicode (the default) to be able to pass strings back to VB6.</li></ul>Reference: <a href="http://vb.mvps.org/tips/vb5dll.asp"><span style="font-family: Courier New,Courier;">VB5DLL.TXT</span></a>

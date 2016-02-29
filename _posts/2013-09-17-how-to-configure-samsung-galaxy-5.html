@@ -1,0 +1,15 @@
+---
+layout: post
+title: How to configure the Samsung Galaxy 5 / Europa to work with ADB / Android Studio
+date: '2013-09-17T14:21:00.003-07:00'
+author: Gert Lombard
+tags:
+- adb
+- Android
+modified_time: '2013-09-17T14:21:42.093-07:00'
+thumbnail: http://1.bp.blogspot.com/-uO2WkTskpz0/UjikkvRnIcI/AAAAAAAACSg/Tu9hHNfvV1c/s72-c/samsung-gt-i5500-choose-device.png
+blogger_id: tag:blogger.com,1999:blog-1583243090910089198.post-252565155963798575
+blogger_orig_url: http://www.lombard.me/2013/09/how-to-configure-samsung-galaxy-5.html
+---
+
+I want to deploy an Android application from <a href="http://developer.android.com/sdk/installing/studio.html">Android Studio</a> to an old <a href="http://www.gsmarena.com/samsung_i5500b-3371.php">Samsung GT-I5500</a> (known as Galaxy 5 or Galaxy Europa) running Android 2.2 Froyo (<a href="http://developer.android.com/about/versions/android-2.2.html">API level 8</a>). (Yes, it's probably worth testing on old phones too, although I admit Froyo is at the very bottom 2.4% of distributions!)<br /><br />Summary of steps:<br /><ol><li>Enable USB debugging</li><li>Select USB connection mode to "UMS mode only"</li></ol>First enable USB debugging by going to Settings -&gt; Applications -&gt; Development -&gt; enable "USB debugging".<br /><br />Plug in the USB cable from the computer to the phone. The phone will pop up the "Setting USB" dialog and ask you to select "KIES" or "UMS mode only". You want to select the first option: UMS mode only. (<a href="http://en.wikipedia.org/wiki/Samsung_Kies">Kies</a> is Samsung's software for updating the phone's software etc).<br /><br />Now the I5500 shows up on my devices list in Android Studio. My Android application was configured for <code>minSdkVersion 10&nbsp;</code>so notice the "no" in the Compatible column when I tried to run the application:<br /><br /><div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/-uO2WkTskpz0/UjikkvRnIcI/AAAAAAAACSg/Tu9hHNfvV1c/s1600/samsung-gt-i5500-choose-device.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" src="http://1.bp.blogspot.com/-uO2WkTskpz0/UjikkvRnIcI/AAAAAAAACSg/Tu9hHNfvV1c/s1600/samsung-gt-i5500-choose-device.png" /></a></div><br />I modified the build.gradle file to <code>minSdkVersion 8</code> and also set <code>android:minSdkVersion="8"</code> in the AndroidManifest.xml file. Now the app deploys OK.<br /><br />Of course ADB.exe also lists the I5500 correctly now:<br /><br /><code>D:\Android\android-studio\sdk\platform-tools&gt; adb devices<br />List of devices attached<br />I550030d7c481 &nbsp; device</code><br /><br />

@@ -1,0 +1,12 @@
+---
+layout: post
+title: VMWare vmmod.tar missing during installation
+date: '2007-09-19T04:02:00.000-07:00'
+author: Gert Lombard
+tags: 
+modified_time: '2007-09-19T04:10:21.580-07:00'
+blogger_id: tag:blogger.com,1999:blog-1583243090910089198.post-4276882588992456312
+blogger_orig_url: http://www.lombard.me/2007/09/vmware-vmmodtar-missing-during.html
+---
+
+Yesterday I had to reinstall VMWare Workstation 6.0 on my Ubuntu 7.04 PC, and again I got stuck during the installation with the error about vmmod.tar not being found under /usr/lib/vmware/modules/source/<br /><br />The solution is simple and widely publicized but still many people seem to sit with this problem.<br /><br />Just create the /usr/lib/vmware/modules/<span style="font-weight: bold;">source</span>/ directory if necessary, then get the vmware-any-any patch from http://knihovny.cvut.cz/ftp/pub/vmware/ (e.g. vmware-any-any-update113.tar.gz) and run the runme.pl to continue the installation.

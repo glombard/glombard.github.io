@@ -1,0 +1,13 @@
+---
+layout: post
+title: The correct way to read a text file in Python
+date: '2013-11-22T02:02:00.001-08:00'
+author: Gert Lombard
+tags:
+- python
+modified_time: '2013-11-22T02:02:41.805-08:00'
+blogger_id: tag:blogger.com,1999:blog-1583243090910089198.post-5406013279184113865
+blogger_orig_url: http://www.lombard.me/2013/11/the-correct-way-to-read-text-file-in.html
+---
+
+When you search for examples of reading a file on the web, most examples you see show: <br /><br /><pre><code>with open('file') as f:<br />  text = f.read()<br /></code></pre><br />But it's quite hard to find examples of the "correct" or "proper" way to read text files in Python. Of course correct/proper is a matter of opinion and depends on what you're trying to accomplish. In many cases you really want to slurp the full file into memory as above, but in my case I more often need to process one line at a time (perhaps in conjunction with a generator), in which case this is what I need: <br /><br /><pre><code>with open('file') as f:<br />  for line in f:<br />    yield line<br /></code></pre><br />Not to mention that you'd deal with binary files in a different way as well...

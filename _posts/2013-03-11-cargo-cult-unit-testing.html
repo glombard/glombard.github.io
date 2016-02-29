@@ -1,0 +1,13 @@
+---
+layout: post
+title: Cargo cult unit testing
+date: '2013-03-11T10:01:00.001-07:00'
+author: Gert Lombard
+tags:
+- Testing
+modified_time: '2013-03-14T13:59:04.137-07:00'
+blogger_id: tag:blogger.com,1999:blog-1583243090910089198.post-4653421579874171459
+blogger_orig_url: http://www.lombard.me/2013/03/cargo-cult-unit-testing.html
+---
+
+<p>Writing unit tests is really time consuming. We strive for 100% code coverage. I often spend more time writing unit tests than I did writing the functionality itself. (And yes, we write unit tests afterwards, we don't do strict TDD, but that's another story).</p> <p>Sometimes I feel like my unit testing is just cargo cult behaviour. Am I just blindly following best practices like unit testing because the experts told me so?</p> <p>Then occasionally I experience that happy moment when a old unit test catches a stupid mistake I just introduced into the code, and my faith is reaffirmed.</p> <p>Overall I can definitely see an improvement in code quality over the crappy code I used to write years ago, so the tests are definitely helping, but I can't help but think sometimes if there isn't another (more productive) way to go? </p> <p>I'm tempted to wonder: wouldn't higher level testing (integration testing) yield the same quality but at less cost? For example, isn't it sufficient to test the acceptance criteria using BDD style tests? I've experimented with SpecFlow previously and found it a very natural way to test. I’d like to give it a try again one day…</p> <p>One example of the side effects of writing testable code is that you’re forced to keep the code cohesive. You really start thinking about coding principles and clean code. If you don’t keep the code clean (cohesive, loosely coupled), you’re going to struggle to write (and worse, maintain) those unit tests. Follow the SOLID principles (e.g. Single Responsibility principle) and your code is going to get so much easier to test. When you’re testing a class that has multiple responsibilities, e.g. a ViewModel (MVVM) in WPF/Silverlight, you easily end up multiplying test cases. For example, when you split a large ViewModel with multiple responsibilities into smaller sub-ViewModels, you’ll likely end up with a smaller number of test cases at the end.</p> <p>If you don’t test everything, every scenario, you’ll loose track of what functionality is actually tested, and you will make a small change to the code, run all tests, the tests pass. But does that really mean that your new change is correct or not? You’ll become complacent and assume you can rely on the unit tests when it’s convenient, but you won’t really know if your code is stable. You need to maintain 100% coverage. As they say “test coverage starts with 100%”</p>  
